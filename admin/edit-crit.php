@@ -57,8 +57,8 @@
                 <?php foreach ($critos as $key => $crit): ?>
                 <div class="row post col-12">
                     <div class="id col-1"><?=$key + 1; ?></div>
-                    <div class="title col-5"><?=$critos['name']; ?></div>
-                    <div class="red col-1" col-1><a href="/admin/edit.php?id=<$critos['id']; ?>">edit</a></div>
+                    <div class="title col-5"><?=$crit['name']; ?></div>
+                    <div class="red col-1" col-1><a href="./edit.php?id=<?=$crit['id']; ?>">edit</a></div>
                     <div class="red col-1" col-1><a href="#">delete</a></div>
                 </div>
 

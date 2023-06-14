@@ -17,7 +17,7 @@
             $errMsg = "Не все поля заполнены!";
         }else{
             $existence = selectOne('crit', ['name' => $name]);
-            if($existence['name' === $name]){
+            if($existence['name'] === $name){
                 $errMsg = "Такая категория в базе есть!";
             }else{
                 $crits = [
@@ -33,8 +33,6 @@
         $name = '';
         $descript = '';
     }
-
-
    
     //редактирование категории
     if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])){
