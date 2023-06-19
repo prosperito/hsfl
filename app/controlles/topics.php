@@ -8,11 +8,13 @@
     $descript = '';
     $critos = selectAll('crit');
 
+
+   // создание критерия 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['crits'])){
 
         $name = trim($_POST['name']);
         $descript = trim($_POST['descript']);
-                
+     
         if($name === '' || $descript === ''){
             $errMsg = "Не все поля заполнены!";
         }else{
@@ -34,12 +36,37 @@
         $descript = '';
     }
    
-    //редактирование категории
+    //редактирование критерия
     if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])){
+
         $id = $_GET['id'];
-        $critos = selectOne('crit',['id'=>$id]);
-        $id = $critos['id'];
-        $name = $critos['name'];
-        $descript = $critos['descript'];
+        $crits = selectOne('crit',['id'=>$id]);
+        $id = $crits['id'];
+        $name = $crits['name'];
+        $descript = $crits['descript'];
     }
  
+    // обновление критерия 
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit-crit'])){
+// tt($_POST);
+        $name = trim($_POST['name']);
+        $descript = trim($_POST['descript']);
+     
+        if($name === '' || $descript === ''){
+            $errMsg = "Не все поля заполнены!";
+        }else{
+            $crits = [
+                    'name' => $name,
+                    'descript' => $descript,
+            ];
+            $id = $_POST['id'];
+            $crits_id = update('crit', $id, $crits);
+            header ('location: edit-crit.php');
+        }
+    }
+        //удаление критерия
+        if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['del_id'])){
+            $id = $_GET['del_id'];
+            delete('crit', $id);
+            header ('location: edit-crit.php');
+        }

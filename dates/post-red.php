@@ -1,5 +1,5 @@
 <?php session_start();
-    include "../app/controlles/topics.php";
+    include "../app/controlles/posts.php";
 ?> 
 
 
@@ -26,7 +26,7 @@
 <body>
 
 <!--HEADER-->
-<?php include("../app/include/header-admin.php"); ?>
+<?php include("../app/include/header-posts.php"); ?>
 
 <!-- блок main-->
 <div class="container">
@@ -37,13 +37,13 @@
 
             <div class="posts col-12">
                 <div class="button row">
-                    <a href="create-crit.php" class="col-2 btn btn-success">Добавить</a>
+                    <a href="create-post.php" class="col-2 btn btn-success">Добавить</a>
                     <span class="col-1"></span>
-                    <a href="edit-crit.php" class="col-2 btn btn-warning">Редактировать</a>
+                    <a href="edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
                 </div>
         
                 <div class="row title-table">
-                    <h2>Обновление критерия</h2>
+                    <h2>Обновление записи</h2>
                     
                 </div>
                 <div class="mb-3 col-12 col-md-4 err">
@@ -51,18 +51,18 @@
                 </div>
 
                 <div class="row add-post">
-                    <form action="edit.php" method="post">
+                    <form action="post-red.php" method="post">
                     <input name="id" value="<?=$id;?>" type="hidden">                   
                         <div class="col">
-                            <input name="name" value="<?=$name;?>" type="text" class="form-control" aria-label="First name">
+                            <input name="title" value="<?=$title;?>" type="text" class="form-control" aria-label="First name">
                         </div>
                         <div class="col">
-                            <label for="descript" class="form-label">Описание</label>
-                            <textarea name="descript" class="form-control" id="exampleFormControlTextarea1" rows="6"><?=$descript;?></textarea>
+                            <label for="content" class="form-label">Описание</label>
+                            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"><?=$content;?></textarea>
                         </div>
                         
                         <div class="col">
-                            <button name="edit-crit" class="btn btn-primary" type="submit">Обновить критерий</button>
+                            <button name="edit-post" class="btn btn-primary" type="submit">Обновить запись</button>
                         </div>
                     </form>
                 </div>

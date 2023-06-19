@@ -1,6 +1,11 @@
+<?php session_start();
+   
+   include "../app/controlles/posts.php";
+
+?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,10 +19,10 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Custom Styling -->
-    <link rel="stylesheet" href="../../assets/css/posts_style.css">
+    <link rel="stylesheet" href="../assets/css/posts_style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>My blog</title>
+    <title>Рейтинговая система</title>
 </head>
 <body>
 
@@ -33,9 +38,9 @@
 
             <div class="posts col-9">
                 <div class="button row">
-                    <a href="/dates/create.php" class="col-2 btn btn-success">Добавить</a>
+                    <a href="/dates/create-post.php" class="col-2 btn btn-success">Добавить</a>
                     <span class="col-1"></span>
-                    <a href="/dates/users.php" class="col-2 btn btn-warning">Редактировать</a>
+                    <a href="/dates/edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
                 </div>
         
                 <div class="row title-table">
@@ -44,30 +49,33 @@
                 </div>
 
                 <div class="row add-post">
-                    <form action="create.php" method="post">
-                        <select name="crit_cat" class="form-select" aria-label="Default select example">
-                            <option selected>Выбрать критерий</option>
-                            <option value="1">Уровень верхней планки освоения обучающимися учебной программы</option>
-                            <option value="2">Уровень достижений обучающихся в олимпиадах</option>
-                            <option value="3">Результативность деятельности учителя по независимой внешней оценке</option>
-                            <option value="4">Работа в комиссиях</option>
-                            <!-- <option value="3">Школьный</option> -->
-                        </select>
+                    <form action="create-post.php" method="post" enctype="multipart/form-data">
                     
                         <div class="col">
-                            <input name="name" type="text" class="form-control" placeholder="Название записи" aria-label="First name">
+                            <input name="title" value="" type="text" class="form-control" placeholder="Название записи" aria-label="First name">
                         </div>
                         <div class="col">
-                            <label for="desciption" class="form-label">Содержимое записи</label>
-                            <textarea name="descript" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                            <label for="content" class="form-label">Содержимое записи</label>
+                            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
                         </div>
                         <div class="col">
-                            <input name="pick" type="file" class="form-control" id="inputGroupFile02">
+                            <input name="img" type="file" class="form-control" id="inputGroupFile02">
                             <label class="input-group-text" for="inputGroupFile02">Добавить</label>
                         </div>
-
-                        <div class="col">
-                            <button name="post-create" class="btn btn-primary" type="submit">Сохранить запись</button>
+                        <select name="crit" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите критерий</option>
+                            <?php foreach ($critos as $key => $crit): ?>
+                                <option value="<?=$crit['id']; ?>"><?=$crit['name']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <div class="form-check">
+                            <input name="publish" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                 Опубликовано
+                            </label>
+                        </div>
+                        <div class="col col-6">
+                            <button name="add_post" class="btn btn-primary" type="submit">Создать запись</button>
                         </div>
                     </form>
                 </div>

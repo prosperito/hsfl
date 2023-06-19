@@ -1,5 +1,5 @@
 <?php session_start();
-    include "../app/controlles/topics.php";
+    include "../app/controlles/posts.php";
 ?> 
 
 
@@ -26,7 +26,7 @@
 <body>
 
 <!--HEADER-->
-<?php include("../app/include/header-admin.php"); ?>
+<?php include("../app/include/header-posts.php"); ?>
 
 <!-- блок main-->
 <div class="container">
@@ -37,24 +37,31 @@
 
             <div class="posts col-12">
                 <div class="button row">
-                    <a href="create-crit.php" class="col-2 btn btn-success">Добавить</a>
+                    <a href="create-post.php" class="col-2 btn btn-success">Добавить</a>
                     <span class="col-1"></span>
-                    <a href="edit-crit.php" class="col-2 btn btn-warning">Редактировать</a>
+                    <a href="edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
                 </div>
 
                 <div class="row title-table">
-                    <h3>Управление критериями</h3>
+                    <h3>Управление записями</h3>
                     <div class="id col-1">№</div>
                     <div class="col-5">Название</div>
-                    <div class="col-3" col-1>Управление</div>
+                    <div class="col-2">Автор</div>
+                    <div class="col-4" col-1>Управление</div>
                 </div>
                
-                <?php foreach ($critos as $key => $crit): ?>
+                <?php foreach ($posts as $key => $post): ?>
                 <div class="row post col-12">
                     <div class="id col-1"><?=$key + 1; ?></div>
-                    <div class="title col-5"><?=$crit['name']; ?></div>
-                    <div class="red col-1" col-1><a href="./edit.php?id=<?=$crit['id']; ?>">edit</a></div>
-                    <div class="red col-1" col-1><a href="./edit.php?del_id=<?=$crit['id']; ?>">delete</a></div>
+                    <div class="title col-5"><?=$post['title']; ?></div>
+                    <div class="title col-2"><?=$post['id_user']; ?></div>
+                    <div class="red col-1" col-1><a href="post-red.php?id=<?=$post['id']; ?>">edit</a></div>
+                    <div class="red col-1" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">delete</a></div>
+                    <?php if ($post['status']): ?>
+                        <div class="status col-2" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">в черновик</a></div>
+                    <?php else: ?>
+                        <div class="status col-2" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">опубликавать</a></div>
+                    <?php endif; ?>
                 </div>
 
                 <?php endforeach; ?>

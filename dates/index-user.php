@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../assets/css/posts_style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>My blog</title>
+    <title>Рейтинговая система</title>
 </head>
 <body>
 

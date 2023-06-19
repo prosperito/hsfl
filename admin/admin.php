@@ -1,9 +1,11 @@
 ﻿<?php session_start();
     include "../app/controlles/topics.php";
+    $posts = selectAll('posts', ['status'=>1]);
+
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,120 +27,29 @@
 <body>
 
 <?php include("../app/include/header-admin.php"); ?>
-<!-- <header class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <h3>
-                    Рейтинговая система оценки деятельности
-                </h3>
-            </div>
-            <nav class="col-8">
-                <ul>
-                    <li><a href="/">Главная</a> </li>
-                    <li><a href="../MO.php">Методобъединения</a> </li>
-                    
-                    <li>
-                        <?php if (isset($_SESSION['id'])): ?>
-                            <a href="logout.php">
-                            <i class="fa fa-user"></i>
-                            <?php echo $_SESSION['login']; ?>
-                        </a>
-
-                        <?php endif; ?>    
-                         
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</header> -->
-
-
-
 
 <!-- блок main-->
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
-        <div class="main-content col-md-8 col-12">
+        <div class="main-content col-md-9 col-12">
             <h2>Достижения педагогов</h2>
-
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ФИО</a></a>
-                    </h3>
-                        сч
-                    </p>
+            <?php foreach($posts as $post): ?>
+                <div class="post row">
+                    <div class="img col-12 col-md-4">
+                        <img src="<?='assets/images/post/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
+                    </div>
+                    <div class="post_text col-12 col-md-8">
+                        <h3>
+                            <a href="#"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
+                        </h3>
+                        <p>
+                            сч
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">фио</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        тот
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">фио</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        ычoы
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ифр</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                       с
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ысы</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        ваы
-                    </p>
-                </div>
-            </div>
+            <?php endforeach; ?>
             
-
-        </div>
         <!-- sidebar Content -->
         <div class="sidebar col-md-4 col-12">
         
@@ -155,7 +66,7 @@
 
                 <h3>Категории</h3>
                 <ul>
-                    <li><a href="#">Управление критериями</a></li>
+                    <li><a href="edit-crit.php">Управление критериями</a></li>
                     <li><a href="#">Воспитательная работа</a></li>
                     <li><a href="#">Классное руководство</a></li>
                     <li><a href="#">Научно-методическая деятельность</a></li>

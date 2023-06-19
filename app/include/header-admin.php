@@ -8,6 +8,11 @@
             </div>
             <nav class="col-8">
                 <ul>
+                    <li>
+                    <a href="admin.php">Главная</a>
+                    </li>
+
+
                     <?php if (isset($_SESSION['id'])): ?>
                     <li>
                         <a href="../../logout.php">
