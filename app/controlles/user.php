@@ -6,18 +6,17 @@ $errMsg = '';
 $MO = selectAll('MO');
 $User = selectAll('user');
 
-function userAuth($user){
-    $_SESSION['id'] = $user['id'];
-    $_SESSION['name'] = $user['name'];
-    $_SESSION['admin'] = $user['admin'];
-    $_SESSION['id_mo'] = $user['id_mo'];
-    if($_SESSION['admin']){
-        header('location: /admin/admin.php');
-    }else{
-        header('location: /dates/index-user.php');
-    }
- 
-}
+// function userAuth($user){
+//     $_SESSION['id'] = $user['id'];
+//     $_SESSION['name'] = $user['name'];
+//     $_SESSION['admin'] = $user['admin'];
+//     $_SESSION['id_mo'] = $user['id_mo'];
+//     if($_SESSION['admin']){
+//         header('location: /admin/admin.php');
+//     }else{
+//         header('location: /dates/index-user.php');
+//     }
+// }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 
@@ -89,11 +88,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])){
             $_SESSION['admin'] = $existence['admin'];
             $_SESSION['id_mo'] = $existence['id_mo'];
 
-            // if ($_SESSION['admin']){
-            //     header('Location: /admin/admin.php');
-            // }else{
-            //     header('Location: /dates/index-user.php');
-            // }
+            if ($_SESSION['admin']){
+                header('Location: /admin/admin.php');
+            }else{
+                header('Location: /dates/index-user.php');
+            }
         }else{
             echo "Имя или пароль неверны!";
         }

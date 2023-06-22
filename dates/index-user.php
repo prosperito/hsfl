@@ -31,86 +31,33 @@
 <!-- блок main-->
 <div class="container">
     <div class="content row">
-        <!-- Main Content -->
-        <div class="main-content col-md-8 col-12">
-        <h2><?php echo $_SESSION['username']; ?></h2>
+        <div class="main-content col-md-9 col-12">
+            <h2><?php echo $_SESSION['username']; ?></h2>
 
             <h2>Мои достижения</h2>
+            <?php foreach($posts as $post): ?>
+                <div class="post row">
+                    <div class="img col-12 col-md-4">
+                        <img src="<?='../assets/img/' . $post['img'] ?>">
+                    </div>
+                    <div class="post_text col-12 col-md-8">
+                        <h3>
+                            <a href="../dates/index-user.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
+                        </h3>
+                        <i class="far fa-user"> <?=$post['username'];?></i>
+                        <i class="far fa-calendar"> <?=$post['datetime'];?></i>
+                        
+                        <p>
+                            <?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?>
+                        </p>
 
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ФИО</a></a>
-                    </h3>
-                        сч
-                    </p>
+                        <div class="mb-3 col-21 col-md-4">
+                            <input name="ball" value="<?=$ball?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="Количество баллов">
+                        </div>
+                        
+                    </div>
                 </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">фио</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        тот
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">фио</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        ычoы
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ифр</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                       с
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <!-- <div class="img col-12 col-md-4">
-                    <img src="images/image_small.png" alt="" class="img-thumbnail">
-                </div> -->
-                <div class="post_text col-12 col-md-12">
-                    <h3>
-                        <a href="#">ысы</a>
-                    </h3>
-                    <!-- <i class="far fa-user"> Имя Автора</i>
-                    <i class="far fa-calendar"> Mar 11, 2019</i> -->
-                    <p class="preview-text">
-                        ваы
-                    </p>
-                </div>
-            </div>
-            
-
+            <?php endforeach; ?>
         </div>
         <!-- sidebar Content -->
         <div class="sidebar col-md-3 col-12">

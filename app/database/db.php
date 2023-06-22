@@ -120,39 +120,18 @@ function delete($table, $id){
     dbCheckError($query);
 }
 
-// Выборка записей (пост)с автора в админку
-function selectAllFromPostsWithUser($table1, $table2){
-    global $pdo;
-    $sql = "SELECT
-    t1.id,
-    t1.title,
-    t1.img,
-    t1.status,
-    t1.id_crit,
-    t1.created_date,
-    t2.user_name
-    FROM $table AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
-
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    dbCheckError($query);
-    return $query->fetchAll();
-}
-
-
-// // Выборка записей (пост) с автором на главную
+// // Выборка записей (пост)с автора в админку
 // function selectAllFromPostsWithUser($table1, $table2){
 //     global $pdo;
-//     $sql = "
-//     SELECT 
+//     $sql = "SELECT
 //     t1.id,
 //     t1.title,
 //     t1.img,
-//     t1.content,
 //     t1.status,
 //     t1.id_crit,
-//     t2.username
-//     FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
+//     t1.created_date,
+//     t2.user_name
+//     FROM $table AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
 
 //     $query = $pdo->prepare($sql);
 //     $query->execute();
@@ -160,10 +139,49 @@ function selectAllFromPostsWithUser($table1, $table2){
 //     return $query->fetchAll();
 // }
 
-//выборка поста для главной страницы
+
+// // // Выборка записей (пост) с автором на главную
+// // function selectAllFromPostsWithUser($table1, $table2){
+// //     global $pdo;
+// //     $sql = "
+// //     SELECT 
+// //     t1.id,
+// //     t1.title,
+// //     t1.img,
+// //     t1.content,
+// //     t1.status,
+// //     t1.id_crit,
+// //     t2.username
+// //     FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
+
+// //     $query = $pdo->prepare($sql);
+// //     $query->execute();
+// //     dbCheckError($query);
+// //     return $query->fetchAll();
+// // }
+
+//выборка поста с автором для главной страницы
 function selectAllFromPostWithOnIndex($table1, $table2){
     global $pdo;
-    $sql = "SELECT p.* FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id";
+    $sql = "SELECT p.* FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status=1";
+    
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetchAll();
+}
+
+//поиск по заголовкам и содержимому
+function searchInTitleAndContent($text, $table1, $table2){
+    $text = trim(strip_tags(stripcslashes(htmlspecialchars(text))));
+    global $pdo;
+    $sql = "SELECT
+    p.*, u.username
+    FROM $table1 AS p
+    JOIN $table2 AS u
+    ON p.id_user = u.id
+    WHERE p.status=1
+    AND p.title LIKE '%$text%' OR p.content LIKE '%$text%'";
     
     $query = $pdo->prepare($sql);
     $query->execute();
