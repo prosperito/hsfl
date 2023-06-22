@@ -1,5 +1,6 @@
 <?php session_start();
     include "../app/controlles/posts.php";
+    echo $post['id'];
 ?> 
 
 
@@ -36,11 +37,7 @@
             <h2><?php echo $_SESSION['username']; ?></h2>
 
             <div class="posts col-12">
-                <div class="button row">
-                    <a href="create-post.php" class="col-2 btn btn-success">Добавить</a>
-                    <span class="col-1"></span>
-                    <a href="edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
-                </div>
+                
         
                 <div class="row title-table">
                     <h2>Обновление записи</h2>
@@ -51,16 +48,41 @@
                 </div>
 
                 <div class="row add-post">
-                    <form action="post-red.php" method="post">
-                    <input name="id" value="<?=$id;?>" type="hidden">                   
+                    <form action="post-red.php" method="post" enctype="multipart/form-data">
+                        <input name="id" value="<?=$selectOnePostById['id'];?>" type="hidden">
+                        <input name="nomerMo" value="<?=$nomerMo['id_mo'];?>" type="hidden">                   
                         <div class="col">
-                            <input name="title" value="<?=$title;?>" type="text" class="form-control" aria-label="First name">
+                            <input name="title" value="<?=$selectOnePostById['title'];?>" type="text" class="form-control" aria-label="First name">
                         </div>
                         <div class="col">
                             <label for="content" class="form-label">Описание</label>
-                            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"><?=$content;?></textarea>
+                            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"><?=$selectOnePostById['content']; ?></textarea>
                         </div>
-                        
+                        <div class="col">
+                            <input name="img" type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Обновить</label>
+                        </div>
+                        <select name="crit" class="form-select" aria-label="Default select example">
+                            <?php foreach ($critos as $key => $crit): ?>
+                                <option value="<?=$crit['id']; ?>"><?=$crit['name']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <div class="form-check">
+                            <?php if (empty($selectOnePostById['publish']) && $selectOnePostById['publish'] == 0): ?>
+                            <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                 publish
+                            </label>
+                            <?php else: ?>
+                                <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked" checked>
+                                 publish
+                            </label>
+                            <?php endif; ?>
+                        </div>
+   
+
                         <div class="col">
                             <button name="edit-post" class="btn btn-primary" type="submit">Обновить запись</button>
                         </div>

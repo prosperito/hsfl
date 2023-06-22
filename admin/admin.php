@@ -1,9 +1,8 @@
 ﻿<?php session_start();
-    include "../app/controlles/topics.php";
-    $posts = selectAll('posts', ['status'=>1]);
+    include "../app/controlles/posts.php";
+    $post = selectAll('posts',['status' => 1]);
 
 ?>
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -31,55 +30,43 @@
 <!-- блок main-->
 <div class="container">
     <div class="content row">
-        <!-- Main Content -->
-        <div class="main-content col-md-9 col-12">
+        <div class="main-content col-8 col-md-12 ">
             <h2>Достижения педагогов</h2>
             <?php foreach($posts as $post): ?>
                 <div class="post row">
+                
                     <div class="img col-12 col-md-4">
-                        <img src="<?='assets/images/post/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
+                        <img src="<?='../assets/img/' . $post['img'] ?>">
                     </div>
                     <div class="post_text col-12 col-md-8">
                         <h3>
-                            <a href="#"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
+                            <a href="../admin/single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
                         </h3>
+                        <i class="far fa-user"> <?=$post['username'];?></i>
+                        <i class="far fa-calendar"> <?=$post['datetime'];?></i>
+                        
                         <p>
-                            сч
+                            <?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?>
                         </p>
+                        
                     </div>
                 </div>
             <?php endforeach; ?>
-            
+      
+       
         <!-- sidebar Content -->
-        <div class="sidebar col-md-4 col-12">
-        
-            <div class="section search">
-                <h3>Поиск</h3>
-                <form action="/" method="post">
-                    <input type="text" name="search-term" class="text-input" placeholder="Введите искомое слово...">
-                </form>
-            </div>
-
-
-            <div class="section topics">
-
-
-                <h3>Категории</h3>
-                <ul>
-                    <li><a href="edit-crit.php">Управление критериями</a></li>
-                    <li><a href="#">Воспитательная работа</a></li>
-                    <li><a href="#">Классное руководство</a></li>
-                    <li><a href="#">Научно-методическая деятельность</a></li>
-                    <li><a href="#">Результативность ИКД</a></li>
-                    <li><a href="create-krit.php">Добавить критерий</a></li>
-                </ul>
-            </div>
-
+                <div class="post row" col-4>
+                    <?php include("../app/include/sidebar-admin.php"); ?>
+           
+                </div>
         </div>
     </div>
 </div>
-
 <!-- блок main END-->
+
+
+
+
 
 </body>
 </html>

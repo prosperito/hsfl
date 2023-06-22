@@ -29,6 +29,7 @@
 <!--HEADER-->
 <?php include("../app/include/header-posts.php"); ?>
 
+
 <!-- блок main-->
 <div class="container">
     <div class="content row">
@@ -62,10 +63,26 @@
                             <input name="img" type="file" class="form-control" id="inputGroupFile02">
                             <label class="input-group-text" for="inputGroupFile02">Добавить</label>
                         </div>
+                        <input type="hidden" name="id_cat" value="<?=$_GET['id'] ?>">
                         <select name="crit" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите критерий</option>
-                            <?php foreach ($critos as $key => $crit): ?>
-                                <option value="<?=$crit['id']; ?>"><?=$crit['name']; ?></option>
+                            
+                        <option selected>Выберите критерий</option>
+
+
+                            <?php 
+                            
+                            $id = $_GET['id']; // Здесь указывается ситуация (цифра), в зависимости от которой выбирается переменная
+
+                            // Массив с переменными
+                            $variables = [
+                                $cat1post, // Переменная для ситуации 1
+                                $cat2post, // Переменная для ситуации 2
+                                $cat3post, // Переменная для ситуации 3
+                                $cat4post  // Переменная для ситуации 4
+                            ];
+
+                            foreach ($variables[$id - 1] as $key => $cat1): ?>
+                                <option value="<?=$cat1['id']; ?>"><?=$cat1['name']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <div class="form-check">

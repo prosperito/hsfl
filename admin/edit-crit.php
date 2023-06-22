@@ -32,7 +32,7 @@
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
-        <div class="main-content col-md-12 col-12">
+        <div class="main-content col-md-12 col-8">
         <h2><?php echo $_SESSION['username']; ?></h2>
 
             <div class="posts col-12">
@@ -58,6 +58,11 @@
                 </div>
 
                 <?php endforeach; ?>
+            </div>
+
+            <div class="post row" col-4>
+                    <?php include("../app/include/sidebar-admin.php"); ?>
+           
             </div>
         </div>        
 </body>

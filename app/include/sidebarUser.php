@@ -8,13 +8,13 @@
                 </ul>
             </div>
             
-            <div class="section topics">
+            
                 <h3>Добавить запись</h3>
-                <ul>
-                    <li><a href="/dates/create-post.php">Учебная деятельность</a></li>
-                    <li><a href="#">Внеурочная работа</a></li>
-                    <li><a href="#">Классное руководство</a></li>
-                    <li><a href="#">Научно-методическая работа</a></li>
-                    
-                </ul>
+                <div class="section topics">
+                        <?php foreach ($critos as $key => $crit): ?>
+                            <li>
+                            <a href="create-post.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                </div>
             </div>

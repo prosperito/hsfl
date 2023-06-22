@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    include "../app/controlles/posts.php";
+?>
 
 <!doctype html>
 <html lang="ru">

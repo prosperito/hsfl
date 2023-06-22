@@ -36,13 +36,19 @@
         </div>
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
-            <label for="formGroupExampleInput" class="form-label">Введите ваше имя</label>
+            <label for="formGroupExampleInput" class="form-label">Ф И О</label>
             <input name="username" value="<?=$username?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваше имя...">
         </div>
         <div class="w-100"></div>
+        <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
-            <label for="content" class="form-label">Введите вашу фамилию</label>
-            <textarea name="family" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+        <select name="MO" class="form-select" aria-label="Default select example">
+          
+                <option class="mb-3 col-12 col-md-4" selected>Выберите методобъединение</option>
+                <?php foreach ($MO as $key => $mo): ?>
+                    <option value="<?=$mo['id']; ?>"><?=$mo['name']; ?></option>
+                            <?php endforeach; ?>
+                </select>
         </div>
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
@@ -55,11 +61,13 @@
             <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="повторите ваш пароль...">
         </div>
         <div class="w-100"></div>
+
         <div class="mb-3 col-12 col-md-4">
             <button name="button-reg" type="submit" class="btn btn-secondary">Регистрация</button>
             <a href="index.php">Войти</a>
         </div>
     </form>
+
 </div>>
 
 

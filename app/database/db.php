@@ -139,10 +139,20 @@ function selectAllFromPostsWithUser($table1, $table2){
     return $query->fetchAll();
 }
 
-// // Выборка записей (пост)ьс автором на главную
+
+// // Выборка записей (пост) с автором на главную
 // function selectAllFromPostsWithUser($table1, $table2){
 //     global $pdo;
-//     $sql = "SELECT p.* FROM $table AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
+//     $sql = "
+//     SELECT 
+//     t1.id,
+//     t1.title,
+//     t1.img,
+//     t1.content,
+//     t1.status,
+//     t1.id_crit,
+//     t2.username
+//     FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
 
 //     $query = $pdo->prepare($sql);
 //     $query->execute();
@@ -150,3 +160,13 @@ function selectAllFromPostsWithUser($table1, $table2){
 //     return $query->fetchAll();
 // }
 
+//выборка поста для главной страницы
+function selectAllFromPostWithOnIndex($table1, $table2){
+    global $pdo;
+    $sql = "SELECT p.* FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id";
+    
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetchAll();
+}

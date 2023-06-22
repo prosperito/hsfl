@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
     include "app/controlles/user.php";
     
 ?>
@@ -29,6 +29,7 @@
 
 <div class="container reg_form">
     <form class="row justify-content-center" method="post" action="index.php"">
+    
         <h3 class="col-12"></h3>
         <div class="mb-3 col-12 col-md-4 err">
             <p><?=$errMsg?></p>
@@ -44,6 +45,8 @@
             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="введите ваш пароль...">
         </div>
         <div class="w-100"></div>
+        <input name="id_mo" value="<?=$_SESSION['id_mo'];?>" type="hidden">
+
         <div class="mb-3 col-12 col-md-4">
             <button name="button-log" type="submit" class="btn btn-secondary">Войти</button>
             <a href="reg.php">Зарегистрироваться</a>

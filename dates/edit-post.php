@@ -58,9 +58,9 @@
                     <div class="red col-1" col-1><a href="post-red.php?id=<?=$post['id']; ?>">edit</a></div>
                     <div class="red col-1" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">delete</a></div>
                     <?php if ($post['status']): ?>
-                        <div class="status col-2" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">в черновик</a></div>
+                        <div class="status col-2" col-1><a href="edit-post.php?publish=0&pub_id=<?=$post['id']; ?>">в черновик</a></div>
                     <?php else: ?>
-                        <div class="status col-2" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">опубликавать</a></div>
+                        <div class="status col-2" col-1><a href="edit-post.php?publish=0&pub_id=<?=$post['id']; ?>">опубликавать</a></div>
                     <?php endif; ?>
                 </div>
 
