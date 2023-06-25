@@ -1,7 +1,7 @@
-﻿<?php session_start();
+﻿<?php 
     include "../app/controlles/posts.php";
-    $post = selectAll('posts',['status' => 1]);
-
+    $posts = selectAllFromPostsWithUsersOnIndex('posts','user');
+    $MO = selectAll('MO');
 ?>
 <!doctype html>
 <html lang="ru">
@@ -38,15 +38,15 @@
                     <div class="img col-12 col-md-4">
                         <img src="<?='../assets/img/' . $post['img'] ?>">
                     </div>
-                    <div class="post_text col-12 col-md-8">
+                    <div class="post_text col-9 col-md-8">
                         <h3>
-                            <a href="../admin/single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
+                            <a href="<?='../admin/single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
                         </h3>
                         <i class="far fa-user"> <?=$post['username'];?></i>
                         <i class="far fa-calendar"> <?=$post['datetime'];?></i>
                         
                         <p>
-                            <?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?>
+                            <?=$post['content']; ?>
                         </p>
                         
                     </div>

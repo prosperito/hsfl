@@ -37,20 +37,27 @@
         <div class="main-content col-md-9 col-12">
             <h2><?php echo $_SESSION['username']; ?></h2>
 
-            <div class="posts col-9">
-                <div class="button row">
+            <div class="posts col-12">
+                <!-- <div class="button row">
                     <a href="/dates/create-post.php" class="col-2 btn btn-success">Добавить</a>
                     <span class="col-1"></span>
-                    <a href="/dates/edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
-                </div>
+                    <a href="/dates/edit.php" class="col-2 btn btn-warning">Редактировать</a>
+                </div> -->
         
                 <div class="row title-table">
-                    <h2>Добавление записей</h2>
+                    <h2>Добавление записи</h2>
                     
                 </div>
-
+                <h4>Выберите критерий</h4>
+                <div class="section topics">
+                        <?php foreach ($critos as $key => $crit): ?>
+                            <li>
+                            <a href="create.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                </div>
                 <div class="row add-post">
-                    <form action="create-post.php" method="post" enctype="multipart/form-data">
+                    <form action="create.php" method="post" enctype="multipart/form-data">
                     
                         <div class="col">
                             <input name="title" value="" type="text" class="form-control" placeholder="Название записи" aria-label="First name">
@@ -59,17 +66,19 @@
                             <label for="content" class="form-label">Содержимое записи</label>
                             <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
                         </div>
+                        <div class="col-2">
+                            <input name="ball" value="" type="text" class="form-control" placeholder="Баллы" aria-label="First name">
+                        </div>
                         <div class="col">
                             <input name="img" type="file" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Добавить</label>
+                            <!-- <label class="input-group-text" for="inputGroupFile02">Добавить</label> -->
                         </div>
                         <input type="hidden" name="id_cat" value="<?=$_GET['id'] ?>">
                         <select name="crit" class="form-select" aria-label="Default select example">
                             
-                        <option selected>Выберите критерий</option>
+                        <option selected>Критерий</option>
 
-
-                            <?php 
+                             <?php 
                             
                             $id = $_GET['id']; // Здесь указывается ситуация (цифра), в зависимости от которой выбирается переменная
 
@@ -79,18 +88,15 @@
                                 $cat2post, // Переменная для ситуации 2
                                 $cat3post, // Переменная для ситуации 3
                                 $cat4post  // Переменная для ситуации 4
-                            ];
-
+                            ];          
+                            
                             foreach ($variables[$id - 1] as $key => $cat1): ?>
                                 <option value="<?=$cat1['id']; ?>"><?=$cat1['name']; ?></option>
-                            <?php endforeach; ?>
+                             <?php endforeach; ?>
                         </select>
-                        <div class="form-check">
-                            <input name="publish" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                                 Опубликовано
+                        
                             </label>
-                        </div>
+                        </div> 
                         <div class="col col-6">
                             <button name="add_post" class="btn btn-primary" type="submit">Создать запись</button>
                         </div>
@@ -99,13 +105,13 @@
             </div>
         </div>
         <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
+        <!-- <div class="sidebar col-md-3 col-12">
            
             <?php include("../app/include/sidebarUser.php"); ?>
 
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- блок main END-->
 

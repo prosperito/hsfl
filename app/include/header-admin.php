@@ -9,8 +9,18 @@
             </div>
             <nav class="col-8">
                 <ul>
-
-
+                    <li><a href="../../admin/admin.php">Главная</a></li>
+                    <li>
+                    <a href="#">Методобъединения</a>
+                        <ul>
+                            <?php foreach ($MO as $key => $mo): ?>
+                                <li>
+                                    <a href="<?='../../admin/mo.php?id=' . $mo['id']; ?>"> <?=$mo['name']; ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                    
                     <?php if (isset($_SESSION['id'])): ?>
                     <li>
                         <a href="../../logout.php">

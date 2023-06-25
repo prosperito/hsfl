@@ -4,21 +4,21 @@ include "app/database/db.php";
 
 $errMsg = '';
 $MO = selectAll('MO');
-$User = selectAll('user');
 
-// function userAuth($user){
-//     $_SESSION['id'] = $user['id'];
-//     $_SESSION['name'] = $user['name'];
-//     $_SESSION['admin'] = $user['admin'];
-//     $_SESSION['id_mo'] = $user['id_mo'];
-//     if($_SESSION['admin']){
-//         header('location: /admin/admin.php');
-//     }else{
-//         header('location: /dates/index-user.php');
-//     }
-// }
+function userAuth($user)
+{
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['name'] = $user['name'];
+    $_SESSION['admin'] = $user['admin'];
+    $_SESSION['id_mo'] = $user['id_mo'];
+    if ($_SESSION['admin']) {
+        header('Location: /admin/admin.php');
+    } else {
+        header('Location: /dates/index-user.php');
+    }
+}
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])) {
 
     $admin = 0;
     $username = trim($_POST['username']);
@@ -26,17 +26,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
     $passS = trim($_POST['pass-second']);
     $mo = trim($_POST['MO']);
 
-    if($username === ''|| $pass === ''){
+    if ($username === '' || $pass === '') {
         $errMsg = "Не все поля заполнены!";
-    }elseif (mb_strlen($username, 'UTF8') <2){
+    } elseif (mb_strlen($username, 'UTF8') < 2) {
         $errMsg = "Введите полное имя";
-    }elseif ($passF !== $passS){
+    } elseif ($passF !== $passS) {
         $errMsg = "Пароли не совпадают!";
-    }else{
+    } else {
         $existence = selectOne('user', ['username' => $username]);
-        if($existence['username' === $username]){
+        if ($existence['username' === $username]) {
             $errMsg = "Пользователь с таким именем уже зарегистрирован";
-        }else{
+        } else {
             $pass = password_hash($passF, PASSWORD_DEFAULT);
             $user = [
                 'admin' => $admin,
@@ -46,25 +46,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 
             ];
 
-    
-        $id = insert('user', $user);
-        // $user = selectOne('user', ['id' => $id]);
-        
 
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['admin'] = $user['admin'];
-        $_SESSION['mo'] = $user['id_mo'];
+            $id = insert('user', $user);
+            // $user = selectOne('user', ['id' => $id]);
 
-        if($_SESSION['admin']){
-            header('Location: /admin/admin.php');
-        }else{
-        header('Location: /');
-        
+
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['admin'] = $user['admin'];
+            $_SESSION['mo'] = $user['id_mo'];
+
+            if ($_SESSION['admin']) {
+                header('Location: /admin/admin.php');
+            } else {
+                header('Location: /');
+
+            }
         }
     }
-}   
-}else{
+} else {
     $username = '';
     $login = '';
     $mo = '';
@@ -72,32 +72,32 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 }
 //  код для формы авторизации
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])){
- 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])) {
+
     $username = trim($_POST['username']);
     $pass = trim($_POST['password']);
 
-    if($username === '' ||$pass === ''){
+    if ($username === '' || $pass === '') {
         $errMsg = "Не все поля заполнены!";
-    }else{
+    } else {
         $existence = selectOne('user', ['username' => $username]);
-        if($existence && password_verify($pass, $existence['password'])){
-         
+        if ($existence && password_verify($pass, $existence['password'])) {
+
             $_SESSION['id'] = $existence['id'];
             $_SESSION['username'] = $existence['username'];
             $_SESSION['admin'] = $existence['admin'];
             $_SESSION['id_mo'] = $existence['id_mo'];
 
-            if ($_SESSION['admin']){
+            if ($_SESSION['admin']) {
                 header('Location: /admin/admin.php');
-            }else{
+            } else {
                 header('Location: /dates/index-user.php');
             }
-        }else{
+        } else {
             echo "Имя или пароль неверны!";
         }
     }
-}else{
+} else {
     $username = '';
 }
 ?>

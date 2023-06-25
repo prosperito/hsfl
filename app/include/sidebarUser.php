@@ -13,7 +13,7 @@
                 <div class="section topics">
                         <?php foreach ($critos as $key => $crit): ?>
                             <li>
-                            <a href="create-post.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
+                            <a href="create.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
                             </li>
                         <?php endforeach; ?>
                 </div>

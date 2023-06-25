@@ -1,7 +1,8 @@
 <?php 
     include "../app/database/db.php";
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search-term'])){
-        $posts = searchInTitleAndContent($_POST['search-term'], 'posts', 'user');
+        $posts = searchInUserName($_POST['search-term'], 'posts', 'user');
     }
 ?>
 
@@ -65,11 +66,6 @@
         <!-- sidebar Content -->
         <div class="sidebar col-md-3 col-12">
 
-            <?php include("../app/include/sidebarUser.php"); ?>
-           
-        </div>
-    </div>
-</div>
 
 <!-- блок main END-->
 
