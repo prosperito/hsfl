@@ -1,9 +1,7 @@
-<?php session_start();
+<?php 
     include "../app/controlles/posts.php";
     $posts = selectAll('posts', ['id_mo' => $_GET['id']]);
-    // $user = selectAll('user');
     $mort = selectOne('MO', ['id'=>$_GET['id']]);
-
 ?>
 <!doctype html>
 <html lang="ru">
@@ -13,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <<link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -34,8 +32,7 @@
     <div class="content row">
         <div class="main-content col-9 col-md-12 ">
         <h4><?=$mort['name']; ?></h4>
-                
-                
+                            
             <h4>Достижения педагогов</h4>
 
             <input type="hidden" name="id_mo" value="<?=$MO ?>">
@@ -48,7 +45,7 @@
                             <h3>
                                 <a href="<?='../admin/single.php?post=' . $post['id'];?>">
                                     <?= substr($post['title'], 0, 120) . '...' ?>
-                                </a></a>
+                                </a>
                             </h3>
                             <i class="far fa-user"> <?=$post['username'];?></i>
                             <i class="far fa-calendar">

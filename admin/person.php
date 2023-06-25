@@ -1,10 +1,10 @@
 <?php
     
     include "../app/controlles/posts.php";
-    // $posts = selectPostFromPostsWithUserOnSingle('posts','user');
+    
     // $top = selectTopFromPostOnIndex('posts');
-    $post = selectPostFromPostsWithUserOnSingle('posts','user', $_GET['post']);
-
+    $post = selectOne('posts', ['id_user'=>$_GET['id']]);
+tt($posts);
 ?>
 
 <!doctype html>
@@ -20,8 +20,7 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Styling -->
     <link rel="stylesheet" href="../../assets/css/posts_style.css">
@@ -41,17 +40,17 @@
         <div class="content row">
             <div class="main-content col-md-9 col-12">
                 <h2>
-                    <?php echo $post['username']; ?>
+                    <?=$post['username']; ?>
                 </h2>
                 <div class="row title-table">
                 <h2>Мои достижения</h2>
-                    <div class="button row">
+                    <!-- <div class="button row">
                         <a href="/dates/create.php" class="col-2 btn btn-success">Добавить</a>
                         <span class="col-1"></span>
                         <a href="edit.php" class="col-2 btn btn-warning">Редактировать</a>
                         <span class="col-1"></span>
                         
-                    </div>
+                    </div> -->
                     </div>
                 </div>
                 <?php foreach ($posts as $post): ?>

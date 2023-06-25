@@ -12,8 +12,7 @@ include "../app/controlles/topics.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -62,7 +61,7 @@ include "../app/controlles/topics.php";
                         <form action="edit.php" method="post">
                             <input name="id" value="<?= $id; ?>" type="hidden">
                             <div class="col">
-                                <input name="title" value="<?= $name; ?>" type="text" class="form-control"
+                                <input name="name" value="<?= $name; ?>" type="text" class="form-control"
                                     aria-label="First name">
                             </div>
                             <div class="col">
@@ -72,8 +71,7 @@ include "../app/controlles/topics.php";
                             </div>
 
                             <div class="col">
-                                <button name="edit-crit" class="btn btn-primary" type="submit">Обновить
-                                    критерий</button>
+                                <button name="edit-crit" class="btn btn-primary" type="submit">Обновить</button>
                             </div>
                         </form>
                     </div>

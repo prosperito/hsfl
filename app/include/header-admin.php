@@ -15,12 +15,25 @@
                         <ul>
                             <?php foreach ($MO as $key => $mo): ?>
                                 <li>
-                                    <a href="<?='../../admin/mo.php?id=' . $mo['id']; ?>"> <?=$mo['name']; ?></a>
+                                    <a href="<?='../../admin/mo2.php?id=' . $mo['id']; ?>"> <?=$mo['name']; ?></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                    </li>
+                     </li>
                     
+                     <li>
+                    <a href="#">Для отчетов</a>
+                        <ul>
+                            <?php foreach ($critos as $key => $crit): ?>
+                                <li>
+                                    <a href="<?='../../admin/crit2.php?id=' . $crit['id']; ?>"> <?=$crit['name']; ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                     </li>
+
+
+
                     <?php if (isset($_SESSION['id'])): ?>
                     <li>
                         <a href="../../logout.php">
