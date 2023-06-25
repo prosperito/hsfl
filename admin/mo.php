@@ -3,6 +3,7 @@
     $posts = selectAll('posts', ['id_mo' => $_GET['id']]);
     $mort = selectOne('MO', ['id'=>$_GET['id']]);
 ?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -11,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <<link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -34,44 +35,34 @@
         <h4><?=$mort['name']; ?></h4>
                             
             <h4>Достижения педагогов</h4>
-
+            <div class="row title-table">
+                    
+                    <div class="w-100"></div>
+                    <div class="id col-1">№</div>
+                    <div class="col-3">Педагог</div>
+                    <div  class="col-3">Название мероприятия</div>
+                    <div class="col-4">Описание достижения</div>
+                    <div class="col-1" col-1>Дата</div>
+                
             <input type="hidden" name="id_mo" value="<?=$MO ?>">
-            <?php foreach ($posts as $post): ?>
-                    <div class="row col-12">
-                        <div class="img col-12 col-md-4">
-                            <img src="<?= '../assets/img/' . $post['img'] ?>">
-                        </div>
-                        <div class="post_text col-12 col-md-8">
-                            <h3>
-                                <a href="<?='../admin/single.php?post=' . $post['id'];?>">
-                                    <?= substr($post['title'], 0, 120) . '...' ?>
-                                </a>
-                            </h3>
-                            <i class="far fa-user"> <?=$post['username'];?></i>
-                            <i class="far fa-calendar">
-                                <?= $post['datetime']; ?>
-                            </i>
+            
+               
+                <?php foreach ($posts as $post): ?>
+                <div class="row post col-12">
+                    <div class="id col-1"><?=$key + 1; ?></div>
+                    <div class="user col-3"><?= $post['username']; ?></div>
+                    <div class="title col-3"><a href="<?='../admin/single.php?post=' . $post['id'];?>">
+                                    <?= $post['title']; ?>
+                                </a></div>
+                    <div class="content col-4"><?= mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?></div>
+                    <div class="datetime col-1"><?= $post['datetime']; ?></div>
 
-                            <p>
-                                <?= mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?>
-                            </p>
+                </div>
 
-                            <div class="col-1 col-md-4">
-                                Количество баллов<input name="ball" value="<?= $ball ?>" type="text" class="form-control"
-                                    id="formGroupExampleInput" placeholder="<?= $post['ball']; ?>">
-                            </div>
-
-                        </div>
-                    </div>
                 <?php endforeach; ?>
 
-
         <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
-                    <?php include("../app/include/sidebar-admin.php"); ?>
-           
-                </div>
-        </div>
+        
 </div>
 <!-- блок main END-->
 

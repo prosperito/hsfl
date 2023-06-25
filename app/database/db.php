@@ -129,18 +129,6 @@ function deleteF($table, $id)
     dbCheckError($query);
 }
 
-// // Выборка записей (пост)с автора в админку
-// function selectAllFromPostsWithUser($table1, $table2){
-//     global $pdo;
-//     $sql = "SELECT * FROM $table AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
-
-//     $query = $pdo->prepare($sql);
-//     $query->execute();
-//     dbCheckError($query);
-//     return $query->fetchAll();
-// }
-
-
 // Выборка записей (пост) с автором в админку
 function selectOneFromPostsWithUser($table1, $table2){
     global $pdo;
@@ -173,16 +161,16 @@ function selectAllFromPostsWithUsersOnIndex($table1, $table2)
 }
 
 //поиск по имени пользователя
-function searchInUserName($text, $table1, $table2)
+function searchInUserName($term, $table1, $table2)
 {
-    $text = trim(strip_tags(stripcslashes(htmlspecialchars($text))));
+    $term = trim(strip_tags(stripcslashes(htmlspecialchars($text))));
     global $pdo;
     $sql = "SELECT
     p.*, u.username
     FROM $table1 AS p
     JOIN $table2 AS u
     ON p.id_user = u.id
-    WHERE p.id_user LIKE '%$TEXT%'";
+    WHERE u.username LIKE '%$TERM%'";
 
     $query = $pdo->prepare($sql);
     $query->execute();
@@ -210,3 +198,12 @@ function selectAllFromPostsWithUsersOnPerson($table1, $table2, $id)
     dbCheckError($query);
     return $query->fetchAll();
 }
+// //сумма
+// SELECT SUM(<название колонки>) FROM <название таблицы>;
+
+// $stmt = $handler->prepare('SELECT SUM(value) AS value_sum FROM codes');
+// $stmt->execute();
+
+// $row = $stmt->fetch(PDO::FETCH_ASSOC);
+// $sum = $row['value_sum'];
+

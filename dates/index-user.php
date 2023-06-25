@@ -85,7 +85,7 @@
             <span class="col-1"></span>
             <div class="mb-3 col-12 col-md-4">
                 <label for="formGroupExampleInput" class="form-label">Общий итог</label>
-                <input name="summ" value="<?=$usersumm?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваше имя...">
+                <input name="summ" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваше имя...">
             </div>
             <!-- sidebar Content -->
             <!-- <div class="sidebar col-md-3 col-12">

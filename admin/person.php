@@ -3,8 +3,9 @@
     include "../app/controlles/posts.php";
     
     // $top = selectTopFromPostOnIndex('posts');
-    $post = selectOne('posts', ['id_user'=>$_GET['id']]);
-tt($posts);
+    $post = selectOne('user', ['id'=>$_GET['id']]);
+tt($post);
+exit();
 ?>
 
 <!doctype html>

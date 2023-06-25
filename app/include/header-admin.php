@@ -15,7 +15,7 @@
                         <ul>
                             <?php foreach ($MO as $key => $mo): ?>
                                 <li>
-                                    <a href="<?='../../admin/mo2.php?id=' . $mo['id']; ?>"> <?=$mo['name']; ?></a>
+                                    <a href="<?='../../admin/mo.php?id=' . $mo['id']; ?>"> <?=$mo['name']; ?></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

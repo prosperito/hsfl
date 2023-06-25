@@ -2,7 +2,7 @@
     include "../app/database/db.php";
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search-term'])){
-        $posts = searchInUserName($_POST['search-term'], 'posts', 'user');
+        $posts = searchInUserName($_POST['search-term'], 'user', 'posts');
     }
 ?>
 
