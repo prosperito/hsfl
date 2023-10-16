@@ -4,8 +4,7 @@
     
     // $top = selectTopFromPostOnIndex('posts');
     $post = selectOne('user', ['id'=>$_GET['id']]);
-tt($post);
-exit();
+
 ?>
 
 <!doctype html>
@@ -44,7 +43,7 @@ exit();
                     <?=$post['username']; ?>
                 </h2>
                 <div class="row title-table">
-                <h2>Мои достижения</h2>
+                <h2>Тимофеева Елена Борисовна</h2>
                     <!-- <div class="button row">
                         <a href="/dates/create.php" class="col-2 btn btn-success">Добавить</a>
                         <span class="col-1"></span>
@@ -85,7 +84,7 @@ exit();
             <span class="col-1"></span>
             <div class="mb-3 col-12 col-md-4">
                 <label for="formGroupExampleInput" class="form-label">Общий итог</label>
-                <input name="summ" value="<?=$usersumm?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваше имя...">
+                <input name="summ" value="<?=$usersumm?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="74">
             </div>
             <!-- sidebar Content -->
             <!-- <div class="sidebar col-md-3 col-12">

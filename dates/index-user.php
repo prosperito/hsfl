@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="../assets/css/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
        
 
     <!-- Font Awesome -->
@@ -43,16 +44,25 @@
                 <h2>
                     <?php echo $_SESSION['username']; ?>
                 </h2>
-                <div class="row title-table">
-                <h2>Мои достижения</h2>
+
+                <div class="button row">
+                    <a href="/dates/users.php" class="col-2 btn btn-success">В данные</a>
+                    <!-- <span class="col-1"></span>
+                    <a href="/dates/users.php" class="col-2 btn btn-warning">Редактировать</a> -->
+                </div>
+                
+
+                <!-- <div class="row title-table"> -->
+                <h3>Достижения</h3>
                     <div class="button row">
-                        <a href="/dates/create.php" class="col-2 btn btn-success">Добавить</a>
+                        <a href="/dates/create.php" class="col-2">Добавить</a>
                         <span class="col-1"></span>
-                        <a href="edit.php" class="col-2 btn btn-warning">Редактировать</a>
+                        <span class="col-1"></span>
+                        <a href="edit.php" class="col-2">Редактировать</a>
                         <span class="col-1"></span>
                         
                     </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <?php foreach ($posts as $post): ?>
                     <div class="row col-12">
@@ -61,7 +71,7 @@
                         </div>
                         <div class="post_text col-12 col-md-8">
                             <h3>
-                                <a href="../admin/single.php?post=<?= $post['id']; ?>">
+                                <a href="../dates/single.php?post=<?= $post['id']; ?>">
                                     <?= substr($post['title'], 0, 120) . '...' ?>
                                 </a></a>
                             </h3>
@@ -85,19 +95,25 @@
             <span class="col-1"></span>
             <div class="mb-3 col-12 col-md-4">
                 <label for="formGroupExampleInput" class="form-label">Общий итог</label>
-                <input name="summ" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваше имя...">
+                <input name="summ" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="74">
+            </div>
+
+            <div class="button row">
+                    <a href="/dates/users.php" class="col-2 btn btn-success">Личные данные</a>
+                    <!-- <span class="col-1"></span>
+                    <a href="/dates/users.php" class="col-2 btn btn-warning">Редактировать</a> -->
             </div>
             <!-- sidebar Content -->
             <!-- <div class="sidebar col-md-3 col-12">
 
                 <?php include("../app/include/sidebarUser.php"); ?>
 
-            </div>-->
+            </div>--> 
           
         </div>
     </div> 
 
-    <!-- блок main END-->
+    <!-- блок main END
 
 </body>
 

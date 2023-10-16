@@ -1,5 +1,5 @@
 <?php session_start();
-    include "../app/controlles/posts.php";
+    include "../app/controlles/persons.php";
     // echo ($_GET);
 ?> 
 
@@ -39,25 +39,24 @@
                 
         
                 <div class="row title-table">
-                    <h2>Обновление записи</h2>
+                    <h2>Добавить запись</h2>
                     
                 </div>
                 <div class="mb-3 col-12 col-md-4 err">
                     <p><?=$errMsg?></p>
                 </div>
-                <h4>Выберите критерий</h4>
-                
+                                
                 <div class="section topics">
-                        <?php foreach ($critos as $key => $crit): ?>
+                        <?php foreach ($person as $key => $person): ?>
                             <li>
-                            <a href="red.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
+                            <a href="add-person-date.php?id=<?=$person['id']; ?>"> <?=$person['title']; ?></a>
                             </li>
                         <?php endforeach; ?>
                 </div>
                 <input type="hidden" name="id_cat" value="<?=$_GET['id'] ?>">
                         <select name="crit" class="form-select" aria-label="Default select example">
                             
-                        <option selected>Критерий</option>
+                        <option selected>Тип данных</option>
 
 
                             <?php 
@@ -66,42 +65,32 @@
 
                             // Массив с переменными
                             $variables = [
-                                $cat1post, // Переменная для ситуации 1
-                                $cat2post, // Переменная для ситуации 2
-                                $cat3post, // Переменная для ситуации 3
-                                $cat4post  // Переменная для ситуации 4
+                                $addpers, // Переменная для ситуации 1
+                                
                             ];
 
-                            foreach ($variables[$id - 1] as $key => $cat1): ?>
-                                <option value="<?=$cat1['id']; ?>"><?=$cat1['name']; ?></option>
+                            foreach ($variables[$id - 1] as $key => $pers): ?>
+                                <option value="<?=$addpers['id']; ?>"><?=$pers['name']; ?></option>
                             <?php endforeach; ?>
                         </select>
                 <div class="row add-post">
 
-                    <form action="post-red.php" method="post" enctype="multipart/form-data">
+                    <form action="add-person-date.php" method="post">
 
-                        <input name="id" value="<?=$selectOnePostById['id'];?>" type="hidden">
+                        <input name="id" value="<?=$selectOnePersById['id'];?>" type="hidden">
                         <input name="nomerMo" value="<?=$nomerMo['id_mo'];?>" type="hidden"> 
                         <div class="col">
-                            <input name="crit" value="<?=$selectOnePostById['crit'];?>" type="text" class="form-control" aria-label="First name">
+                            <input name="crit" value="<?=$selectOnePersById['crit'];?>" type="text" class="form-control" aria-label="First name">
                         </div> 
                         <div class="col">
-                            <input name="cat" value="<?=$selectOnePostById['crit'];?>" type="text" class="form-control" aria-label="First name">
+                            <input name="cat" value="<?=$selectOnePersById['crit'];?>" type="text" class="form-control" aria-label="First name">
                         </div>                  
-                        <div class="col">
-                            <input name="title" value="<?=$selectOnePostById['title'];?>" type="text" class="form-control" aria-label="First name">
-                        </div>
+                        
                         <div class="col">
                             <label for="content" class="form-label">Описание</label>
                             <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"><?=$selectOnePostById['content']; ?></textarea>
                         </div>
-                        <div class="col-2">
-                            <input name="ball" value="" type="text" class="form-control" placeholder="Баллы" aria-label="First name">
-                        </div>
-                        <div class="col">
-                            <input name="img" type="file" class="form-control" id="inputGroupFile02">
-                            <!-- <label class="input-group-text" for="inputGroupFile02">Обновить</label> -->
-                        </div>
+                       
                         <select name="crit" class="form-select" aria-label="Default select example">
                             <!-- <?php foreach ($critos as $key => $crit): ?>
                                 <option value="<?=$crit['id']; ?>"><?=$crit['name']; ?></option>
@@ -127,7 +116,7 @@
    
 
                         <div class="col col-6">
-                            <button name="edit-post" class="btn btn-primary" type="submit">Обновить запись</button>
+                            <button name="add-person-date" class="btn btn-primary" type="submit">Сохранить запись</button>
                         </div>
                     </form>
                 </div>

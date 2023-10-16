@@ -9,7 +9,7 @@
             </div>
             
             
-                <h3>Добавить запись</h3>
+                <h3>Управление критериями</h3>
                 <div class="section topics">
                         <?php foreach ($critos as $key => $crit): ?>
                             <li>

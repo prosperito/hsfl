@@ -12,20 +12,15 @@ $errMsg = '';
 $id = '';
 $title = '';
 $content = '';
-$ball = '';
-$img = '';
-$crit = '';
 $mo = '';
 
-$critos = selectAll('crit');
-$posts = selectAll('posts');
-$cat1post = selectAll('cat1');
-$cat2post = selectAll('cat2');
-$cat3post = selectAll('cat3');
-$cat4post = selectAll('cat4');
+$person = selectAll('person');
+$addpers = selectAll('pers');
 $MO = selectAll('MO');
 // $postAdm = selectAllFromPostsWithUser('posts','user');
 //tt($postAdm);
+
+
 // создание записи
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_post'])) {
     // tt($_POST);
@@ -38,51 +33,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_post'])) {
 
     $title = trim($_POST['title']);
     $content = trim($_POST['content']);
-    $ball = trim($_POST['ball']);
-    $crit = trim($_POST['crit']);
+    $pers = trim($_POST['pers']);
+    // $publish = trim($_POST['publish']) !== null ? 1 : 0;
     $mo = trim($_POST['mo']);
-    $cat = trim($_POST['id_cat']);
+    $pers = trim($_POST['id_pers']);
     if ($title === '' || $content === '') {
         $errMsg = "Не все поля заполнены!";
 
     } else {
-        $post = [
+        $pers = [
             'id_user' => (int) $_SESSION['id'],
             'title' => $title,
             'content' => $content,
-            'ball' => $ball,
             // 'img' => $img,
             // 'status' => 1,
-            'id_cat' => $cat,
-            'id_crit' => $crit,
+            'id_pers' => $pers,
             'id_mo' => (int) $_SESSION['id_mo']
         ];
 
-        $post = insert('posts', $post);
-        $post = selectOne('posts', ['id' => $id]);
-        header('location: edit.php');
+        $person = insert('person', $person);
+        $post = selectOne('person', ['id' => $id]);
+        header('location: add-person-date.php');
     }
 } else {
     $id = '';
     $title = '';
     $content = '';
-    $ball = '';
-    // $img = '';
-    $id_crit = '';
-    $cat1 = '';
+    $id_pers = '';
+    // $publish = '';
     $mo = '';
 }
 
 //редактирование записи
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
-    $selectOnePostById = selectOne('posts', ['id' => $_GET['id']]);
+    $selectOnePersonById = selectOne('person', ['id' => $_GET['id']]);
     $nomerMo = selectOne('user', ['id' => $_GET['id']]);
     $id = $post['id'];
     $title = $post['title'];
     $content = $post['content'];
-    $ball = $post['ball'];
-    $crit = $post['id_crit'];
+    $pers = $post['id_pers'];
     // $publish = $post['status'];
 
     //    tt($_POST);
@@ -90,23 +80,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = '';
     $title = '';
     $content = '';
-    $ball = '';
-    // $img = '';
-    $crit1 = '';
+    $pers = '';
     // $publish = '';
 }
 
 // обновление записи
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit'])) {
     $id = $_POST['id'];
+
     $title = trim($_POST['title']);
     $content = trim($_POST['content']);
     $ball = trim($_POST['ball']);
     $crit = trim($_POST['crit']);
     // $publish = trim($_POST['publish']) !== null ? 1 : 0;
 
-    if ($title === '' || $content === '' || $crit === '' || $ball === '') {
-        array_push($errMsg, "Не все поля заполнены!");
+    if ($title === '' || $content === '' || $crit === '') {
+        $errMsg = "Не все поля заполнены!";
 
     } else {
         $post = [
@@ -120,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit'])) {
         ];
 
         update('posts', $id, $post);
-        $post = update('posts', ['id' => $id]);
+        $post = selectOne('posts', ['id' => $id]);
         header('location: edit.php');
     }
 } else {

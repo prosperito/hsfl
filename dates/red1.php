@@ -37,57 +37,21 @@
 
             <div class="posts col-9">
                 
-        
-                <div class="row title-table">
+                    <div class="row title-table">
                     <h2>Обновление записи</h2>
                     
                 </div>
                 <div class="mb-3 col-12 col-md-4 err">
                     <p><?=$errMsg?></p>
                 </div>
-                <h4>Выберите критерий</h4>
-                
-                <div class="section topics">
-                        <?php foreach ($critos as $key => $crit): ?>
-                            <li>
-                            <a href="red.php?id=<?=$crit['id']; ?>"> <?=$crit['name']; ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                </div>
-                <input type="hidden" name="id_cat" value="<?=$_GET['id'] ?>">
-                        <select name="crit" class="form-select" aria-label="Default select example">
-                            
-                        <option selected>Критерий</option>
-
-
-                            <?php 
-                            
-                            $id = $_GET['id']; // Здесь указывается ситуация (цифра), в зависимости от которой выбирается переменная
-
-                            // Массив с переменными
-                            $variables = [
-                                $cat1post, // Переменная для ситуации 1
-                                $cat2post, // Переменная для ситуации 2
-                                $cat3post, // Переменная для ситуации 3
-                                $cat4post  // Переменная для ситуации 4
-                            ];
-
-                            foreach ($variables[$id - 1] as $key => $cat1): ?>
-                                <option value="<?=$cat1['id']; ?>"><?=$cat1['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                                                      
                 <div class="row add-post">
 
-                    <form action="post-red.php" method="post" enctype="multipart/form-data">
+                    <form action="edit.php" method="post" enctype="multipart/form-data">
 
                         <input name="id" value="<?=$selectOnePostById['id'];?>" type="hidden">
                         <input name="nomerMo" value="<?=$nomerMo['id_mo'];?>" type="hidden"> 
-                        <div class="col">
-                            <input name="crit" value="<?=$selectOnePostById['crit'];?>" type="text" class="form-control" aria-label="First name">
-                        </div> 
-                        <div class="col">
-                            <input name="cat" value="<?=$selectOnePostById['crit'];?>" type="text" class="form-control" aria-label="First name">
-                        </div>                  
+                        
                         <div class="col">
                             <input name="title" value="<?=$selectOnePostById['title'];?>" type="text" class="form-control" aria-label="First name">
                         </div>
@@ -102,14 +66,14 @@
                             <input name="img" type="file" class="form-control" id="inputGroupFile02">
                             <!-- <label class="input-group-text" for="inputGroupFile02">Обновить</label> -->
                         </div>
-                        <select name="crit" class="form-select" aria-label="Default select example">
-                            <!-- <?php foreach ($critos as $key => $crit): ?>
+                        <!-- <select name="crit" class="form-select" aria-label="Default select example">
+                            <?php foreach ($critos as $key => $crit): ?>
                                 <option value="<?=$crit['id']; ?>"><?=$crit['name']; ?></option>
-                            <?php endforeach; ?> -->
+                            <?php endforeach; ?>
                             <?php 
                             
                             $id = $_GET['id']; ?>
-                        </select>
+                        </select> -->
 
                         <!-- <div class="form-check">
                             <?php if (empty($selectOnePostById['publish']) && $selectOnePostById['publish'] == 0): ?>
@@ -127,18 +91,18 @@
    
 
                         <div class="col col-6">
-                            <button name="edit-post" class="btn btn-primary" type="submit">Обновить запись</button>
+                            <button name="edit" class="btn btn-primary" type="submit">Обновить запись</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
+        <!-- <div class="sidebar col-md-3 col-12">
            
            <?php include("../app/include/sidebarUser.php"); ?>
 
-       </div>
+       </div> -->
    </div>
 </div>     
 </body>

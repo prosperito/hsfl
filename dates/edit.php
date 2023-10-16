@@ -68,7 +68,7 @@
                     <div class="title col-4"><?=$post['title']; ?></div>
                     <div class="title col-4"><?=$post['content']; ?></div>
                     <div class="title col-1"><?=$post['ball']; ?></div>
-                    <div class="red col-1" col-1><a href="red.php?id=<?=$post['id']; ?>">edit</a></div>
+                    <div class="red col-1" col-1><a href="red1.php?id=<?=$post['id']; ?>">edit</a></div>
                     <div class="red col-1" col-1><a href="edit.php?del_id=<?=$post['id']; ?>">delete</a></div>
                     <!-- <?php if ($post['status']): ?>
                         <div class="status col-2" col-1><a href="edit-post.php?publish=0&pub_id=<?=$post['id']; ?>">в черновик</a></div>

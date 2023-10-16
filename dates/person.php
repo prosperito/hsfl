@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+   include "../app/controlles/persons.php";
+?>
 
 
 <!doctype html>
@@ -53,32 +55,32 @@
                 <div class="row post">
                     <div class="id col-1">2</div>
                     <div class="title col-3">Образование</div>
-                    <div class="title col-7"><?=$addperson[$educa];?></div>
-                    <div class="red col-1" col-1><a href="">edit</a></div>
+                    <div class="title col-7"><?=$addperson[$edu];?></div>
+                    <div class="red col-1" col-1><a href="/dates/add-person-date.php?id=<?=$person['id'];">edit</a></div>
                 </div>
                 <div class="row post">
                     <div class="id col-1">3</div>
-                    <div class="title col-3">Должность, предмет</div>
-                    <div class="title col-7"><?=$addperson[$posi];?></div>
-                    <div class="red col-1" col-1><a href="">edit</a></div>
+                    <div class="title col-3">Предмет</div>
+                    <div class="title col-7"><?=$addperson[$predmet];?></div>
+                    <div class="red col-1" col-1><a href="/dates/add-person-date.php">edit</a></div>
                 </div>
                 <div class="row post">
                     <div class="id col-1">4</div>
-                    <div class="title col-3">Категория, срок аттестации</div>
+                    <div class="title col-3">Категория</div>
                     <div class="title col-7"><?=$addperson[$cath];?></div>
-                    <div class="red col-1" col-1><a href="">edit</a></div>
+                    <div class="red col-1" col-1><a href="/dates/add-person-date.php">edit</a></div>
                 </div>
                 <div class="row post">
                     <div class="id col-1">5</div>
                     <div class="title col-3">Награды</div>
                     <div class="title col-7"><?=$addperson[$rewa];?></div>
-                    <div class="red col-1" col-1><a href="">edit</a></div>
+                    <div class="red col-1" col-1><a href="/dates/add-person-date.php">edit</a></div>
                 </div>
                 <div class="row post">
                     <div class="id col-1">6</div>
                     <div class="title col-3">Курсы ПК</div>
-                    <div class="title col-7"><?=$addperson[$course];?></div>
-                    <div class="red col-1" col-1><a href="">edit</a></div>
+                    <div class="title col-7"><?=$addperson[$courses];?></div>
+                    <div class="red col-1" col-1><a href="/dates/add-person-date.php">edit</a></div>
                 </div>
                 
             </div>
@@ -86,11 +88,11 @@
                        
         </div>
         <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
+        <!-- <div class="sidebar col-md-3 col-12">
            
             <?php include("../app/include/sidebarUser.php"); ?>
 
-        </div>
+        </div> -->
     </div>
 </div>
 

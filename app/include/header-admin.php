@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="../../admin/admin.php">Главная</a></li>
                     <li>
-                    <a href="#">Методобъединения</a>
+                    <a href="#">МО</a>
                         <ul>
                             <?php foreach ($MO as $key => $mo): ?>
                                 <li>
@@ -32,16 +32,16 @@
                         </ul>
                      </li>
 
-
-
                     <?php if (isset($_SESSION['id'])): ?>
                     <li>
                         <a href="../../logout.php">
                             <i class="fa fa-user"></i>
                             <?php echo $_SESSION['username']; ?>
                         </a>
+                        <ul>
+                            <li><a href="../../logout.php">Выход</a> </li>
+                        </ul>
                     </li>
-                    <li><a href="../../logout.php">Выход</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

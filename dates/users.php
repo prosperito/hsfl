@@ -32,34 +32,73 @@
         <div class="main-content col-md-9 col-12">
             <h2><?php echo $_SESSION['username']; ?></h2>
 
-            <div class="posts col-8">
+            <!-- <div class="posts col-12"> -->
                 <div class="button row">
-                    <a href="/dates/create.php" class="col-2 btn btn-success">Добавить</a>
-                    <span class="col-1"></span>
-                    <a href="/dates/users.php" class="col-2 btn btn-warning">Редактировать</a>
+                    <a href="/dates/index-user.php" class="col-2 btn btn-success">В достижения</a>
+                    <!-- <span class="col-1"></span>
+                    <a href="/dates/users.php" class="col-2 btn btn-warning">Редактировать</a> -->
                 </div>
-        
-                <div class="row title-table">
-                    <h3>Управление записями</h3>
+                
+                <h3>Личные данные</h3>
+                <!-- <div class="row title-table">
                     <div class="id col-1">№</div>
-                    <div class="col-3">Критерий</div>
-                    <div class="col-3">Категория</div>
-                    <div class="col-4" col-1>Управление</div>
-                </div>
+                    <div class="col-3">Данные</div></div>
+                    <div class="col-6">Опись</div>
+                    <div class="col-3" col-1>Ред</div>
+                </div> -->
 
                 <div class="row post">
-
-                    <div class="id col-1">1</div>
-                    <div class="title col-3">title</div>
-                    <div class="autor col-3">autor</div>
-                    <div class="red col-2" col-1><a href="">edit</a></div>
-                    <div class="del col-2" col-1><a href="">delete</a></div>
+                    <div class="title col-3">Дата рождения</div>
+                    <div class="autor col-6">ммм</div>
+                    
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
                 </div>
-
-
-            </div>
+                <div class="row post">
+                    <div class="title col-3">Образование</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Пед стаж</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Предмет</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Категория</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Год следующей аттестации</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Курсы повышения квалификации</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                <div class="row post">
+                    <div class="title col-3">Награды</div>
+                    <div class="autor col-6">ммм</div>
+                    <div class="red col-3" col-1><a href="">edit</a></div>
+                    <!-- <div class="del col-2" col-1><a href="">delete</a></div> -->
+                </div>
+                             
+            <!-- </div> -->
 <!-- sidebar Content -->
-<div class="sidebar col-md-4 col-12">
+<!-- <div class="sidebar col-md-4 col-12">
            
            <?php include("../app/include/sidebarUser.php"); ?>
 
@@ -68,7 +107,7 @@
         </div>
         
     </div>
-</div>
+</div> -->
 
 <!-- блок main END-->
 
