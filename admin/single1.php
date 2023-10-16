@@ -1,7 +1,7 @@
 <?php 
     include "../app/controlles/posts.php";
-    $posts = selectAll('posts', ['id_crit' => $_GET['id']]);
-    $mort = selectOne('MO', ['id'=>$_GET['id']]);
+    $posts = selectAll('posts', ['id_mo' => $_GET['id']]);
+    $post = selectOne('posts', ['id'=>$_GET['id']]);
 ?>
 
 <!doctype html>
@@ -50,7 +50,7 @@
                 <?php foreach ($posts as $post): ?>
                 <div class="row post col-12">
                     <div class="id col-1"><?=$key + 1; ?></div>
-                    <div class="user col-3"><?= $post['id']; ?></div>
+                    <div class="user col-3"><?= $post['id_user']; ?></div>
                     <div class="title col-3"><a href="<?='../admin/single.php?post=' . $post['id'];?>">
                                     <?= $post['title']; ?>
                                 </a></div>

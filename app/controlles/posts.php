@@ -7,8 +7,6 @@ if (!$_SESSION['id'])
 // $_SESSION['admin'] = $existence['admin'];
 // $_SESSION['id_mo'] = $existence['id_mo'];
 $errMsg = '';
-
-
 $id = '';
 $title = '';
 $content = '';
@@ -23,6 +21,7 @@ $cat1post = selectAll('cat1');
 $cat2post = selectAll('cat2');
 $cat3post = selectAll('cat3');
 $cat4post = selectAll('cat4');
+$cat5post = selectAll('cat5');
 $MO = selectAll('MO');
 // $postAdm = selectAllFromPostsWithUser('posts','user');
 //tt($postAdm);
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_post'])) {
 
         $post = insert('posts', $post);
         $post = selectOne('posts', ['id' => $id]);
-        header('location: edit.php');
+        header('location: index-user.php');
     }
 } else {
     $id = '';
@@ -104,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit'])) {
     $ball = trim($_POST['ball']);
     $crit = trim($_POST['crit']);
     // $publish = trim($_POST['publish']) !== null ? 1 : 0;
-
-    if ($title === '' || $content === '' || $crit === '' || $ball === '') {
+    // || $crit === '' || $ball === ''
+    if ($title === '' || $content === '') {
         array_push($errMsg, "Не все поля заполнены!");
 
     } else {
@@ -118,10 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit'])) {
             // 'status' => 1,
             'id_crit' => (int) $crit1
         ];
-
+//tt($_POST);
         update('posts', $id, $post);
-        $post = update('posts', ['id' => $id]);
-        header('location: edit.php');
+        $post = update('posts', ['id' => $id], $post);
+        header('location: index-user.php');
     }
 } else {
     $id = '';
@@ -129,15 +128,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit'])) {
     $content = $_POST['content'];
     $ball = $_POST['ball'];
     $id_crit = '';
-    // $publish = isset($_POST['publish']) ? 1 : 0; //проверяем отмечен чек бокс или нет
-    $crit1 = $_POST['id_crit'];
+    $crit = $_POST['id_crit'];
 }
 
 //удаление записи
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['del_id'])) {
     $id = $_GET['del_id'];
     deleteF('posts', $id);
-    header('location: edit.php');
+    header('location: index-user.php');
 }
 
 //поиск по заголовкам и содержимому

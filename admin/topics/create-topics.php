@@ -25,7 +25,7 @@
 <body>
 
 <!--HEADER-->
-<?php include("../app/include/header-admin.php"); ?>
+<?php include("../../app/include/header-admin.php"); ?>
 
 <!-- блок main-->
 <div class="container">

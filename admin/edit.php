@@ -36,10 +36,11 @@ include "../app/controlles/topics.php";
         <div class="content row">
             <!-- Main Content -->
             <div class="main-content col-md-12 col-12">
-                <h2>
-                    <?php echo $_SESSION['username']; ?>
-                </h2>
-
+            <div class="mb-3 col-12 col-md-4 err">
+                <p>
+                    <?= $errMsg ?>
+                </p>
+            </div>
                 <div class="posts col-12">
                     <div class="button row">
                         <a href="create-crit.php" class="col-2 btn btn-success">Добавить</a>

@@ -32,9 +32,17 @@
 <div class="container">
     <div class="content row">
         <div class="main-content col-9 col-md-12 ">
+        <div class="mb-3 col-12 col-md-4 err">
+            <p><?=$errMsg?></p>
+        </div>
         <h4><?=$mort['name']; ?></h4>
-                            
+        <div class="mb-3 col-12 col-md-4 err">
+            <p><?=$errMsg?></p>
+        </div>                    
             <h4>Достижения педагогов</h4>
+            <div class="mb-3 col-12 col-md-4 err">
+                <p><?=$errMsg?></p>
+            </div>
             <div class="row title-table">
                     
                     <div class="w-100"></div>
@@ -51,9 +59,9 @@
                 <div class="row post col-12">
                     <div class="id col-1"><?=$key + 1; ?></div>
                     <div class="user col-3"><?= $post['id_user']; ?></div>
-                    <div class="title col-3"><a href="<?='../admin/single.php?post=' . $post['id'];?>">
+                    <!-- <div class="title col-3"><a href="<?='../admin/single.php?post=' . $post['id'];?>"> -->
                                     <?= $post['title']; ?>
-                                </a></div>
+                                <!-- </a></div> -->
                     <div class="content col-4"><?= mb_substr($post['content'], 0, 150, 'UTF-8') . '...' ?></div>
                     <div class="datetime col-1"><?= $post['datetime']; ?></div>
 

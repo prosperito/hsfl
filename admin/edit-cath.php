@@ -1,5 +1,5 @@
 <?php session_start();
-    include "../app/controlles/posts.php";
+    include "../app/controlles/cathegory.php";
 ?> 
 
 
@@ -26,46 +26,42 @@
 <body>
 
 <!--HEADER-->
-<?php include("../app/include/header-posts.php"); ?>
+<?php include("../app/include/header-admin.php"); ?>
 
 <!-- блок main-->
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
-        <div class="main-content col-md-12 col-12">
-        <h2><?php echo $_SESSION['username']; ?></h2>
+        <div class="main-content col-md-12 col-8">
+        <div class="mb-12 col-12 col-md-12 err">
+            <p><?=$errMsg?></p>
+        </div>
 
             <div class="posts col-12">
                 <div class="button row">
-                    <a href="create-post.php" class="col-2 btn btn-success">Добавить</a>
+                    <a href="create-cathegory.php" class="col-2 btn btn-success">Добавить</a>
                     <span class="col-1"></span>
-                    <a href="edit-post.php" class="col-2 btn btn-warning">Редактировать</a>
+                    <!-- <a href="edit-cath.php" class="col-2 btn btn-warning">Редактировать</a> -->
                 </div>
-
+                <h3>Управление критериями</h3>
                 <div class="row title-table">
-                    <h3>Управление записями</h3>
+                    
                     <div class="id col-1">№</div>
                     <div class="col-5">Название</div>
-                    <div class="col-2">Автор</div>
-                    <div class="col-4" col-1>Управление</div>
+                    <div class="col-6" col-1>Управление</div>
                 </div>
                
-                <?php foreach ($posts as $key => $post): ?>
+                <?php foreach ($cathegorys as $key => $cath): ?>
                 <div class="row post col-12">
                     <div class="id col-1"><?=$key + 1; ?></div>
-                    <div class="title col-5"><?=$post['title']; ?></div>
-                    <div class="title col-2"><?=$post['id_user']; ?></div>
-                    <div class="red col-1" col-1><a href="post-red.php?id=<?=$post['id']; ?>">edit</a></div>
-                    <div class="red col-1" col-1><a href="edit-post.php?del_id=<?=$post['id']; ?>">delete</a></div>
-                    <?php if ($post['status']): ?>
-                        <div class="status col-2" col-1><a href="edit-post.php?publish=0&pub_id=<?=$post['id']; ?>">в черновик</a></div>
-                    <?php else: ?>
-                        <div class="status col-2" col-1><a href="edit-post.php?publish=0&pub_id=<?=$post['id']; ?>">опубликавать</a></div>
-                    <?php endif; ?>
+                    <div class="title col-7"><?=$cath['name']; ?></div>
+                    <div class="red col-2" col-1><a href="./edit1cath.php?id=<?=$cath['id']; ?>">edit</a></div>
+                    <div class="red col-2" col-1><a href="./edit-cath.php?del_id=<?=$cath['id']; ?>">delete</a></div>
                 </div>
 
                 <?php endforeach; ?>
             </div>
+
         </div>        
 </body>
 </html>

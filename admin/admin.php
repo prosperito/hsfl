@@ -40,7 +40,7 @@
                     </div>
                     <div class="post_text col-9 col-md-8">
                         <h3>
-                            <a href="<?='../admin/single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
+                            <a href="<?='../admin/single1.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a>
                         </h3>
                         <i class="far fa-user"> <?=$post['username'];?></i>
                         <i class="far fa-calendar"> <?=$post['datetime'];?></i>
@@ -54,12 +54,8 @@
             <?php endforeach; ?>
         </div>
        
-        <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
-                    <?php include("../app/include/sidebar-admin.php"); ?>
-           
-                </div>
-        </div>
+ 
+    </div>
 </div>
 <!-- блок main END-->
 
